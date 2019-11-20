@@ -55,6 +55,11 @@ IndexBuffer* IndexBuffer::Builder::build(Engine& engine) {
 
 namespace details {
 
+void FIndexBuffer::getId(FEngine& engine, void* result) {
+  engine.getDriverApi().getIndexBufferId(mHandle, result);
+  engine.flushAndWait();
+}
+
 FIndexBuffer::FIndexBuffer(FEngine& engine, const IndexBuffer::Builder& builder)
         : mIndexCount(builder->mIndexCount) {
     FEngine::DriverApi& driver = engine.getDriverApi();
@@ -80,6 +85,10 @@ void FIndexBuffer::setBuffer(FEngine& engine, BufferDescriptor&& buffer, uint32_
 // ------------------------------------------------------------------------------------------------
 
 using namespace details;
+
+void IndexBuffer::getId(Engine& engine, void* result) {
+  upcast(this)->getId(upcast(engine), result);
+}
 
 void IndexBuffer::setBuffer(Engine& engine,
         IndexBuffer::BufferDescriptor&& buffer, uint32_t byteOffset) {

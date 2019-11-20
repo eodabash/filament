@@ -439,6 +439,12 @@ public class VertexBuffer {
     void clearNativeObject() {
         mNativeObject = 0;
     }
+    
+    public int getId(@NonNull Engine engine, int index) {
+        return nGetId(getNativeObject(), index, engine.getNativeObject());
+    }
+
+    private static native int nGetId(long nativeObject, int index, long nativeEngine);
 
     private static native long nCreateBuilder();
     private static native void nDestroyBuilder(long nativeBuilder);

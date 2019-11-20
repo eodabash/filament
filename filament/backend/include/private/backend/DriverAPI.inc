@@ -437,6 +437,19 @@ DECL_DRIVER_API_N(readStreamPixels,
         uint32_t, height,
         backend::PixelBufferDescriptor&&, data)
 
+DECL_DRIVER_API_N(getTextureId,
+        backend::TextureHandle, th,
+        void*, result)
+
+DECL_DRIVER_API_N(getVertexBufferId,
+        backend::VertexBufferHandle, th,
+        uint8_t, index,
+        void*, result)
+
+DECL_DRIVER_API_N(getIndexBufferId,
+        backend::IndexBufferHandle, th,
+        void*, result)
+
 /*
  * Rendering operations
  * --------------------

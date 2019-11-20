@@ -191,6 +191,11 @@ size_t FVertexBuffer::getVertexCount() const noexcept {
     return mVertexCount;
 }
 
+void FVertexBuffer::getId(FEngine& engine, uint8_t index, void* result) {
+  engine.getDriverApi().getVertexBufferId(mHandle, index, result);
+  engine.flushAndWait();
+}
+
 void FVertexBuffer::setBufferAt(FEngine& engine, uint8_t bufferIndex,
         backend::BufferDescriptor&& buffer, uint32_t byteOffset) {
     if (bufferIndex < mBufferCount) {
@@ -209,6 +214,10 @@ void FVertexBuffer::setBufferAt(FEngine& engine, uint8_t bufferIndex,
 // ------------------------------------------------------------------------------------------------
 
 using namespace filament::details;
+
+void VertexBuffer::getId(Engine& engine, uint8_t index, void* result) {
+  upcast(this)->getId(upcast(engine), index, result);
+}
 
 size_t VertexBuffer::getVertexCount() const noexcept {
     return upcast(this)->getVertexCount();

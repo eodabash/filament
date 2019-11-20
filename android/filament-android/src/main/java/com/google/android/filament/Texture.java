@@ -993,6 +993,10 @@ public class Texture {
         nGenerateMipmaps(getNativeObject(), engine.getNativeObject());
     }
 
+    public int getId(@NonNull Engine engine) {
+        return nGetId(getNativeObject(), engine.getNativeObject());
+    }
+
     /**
      * Creates a reflection map from an environment map.
      *
@@ -1101,6 +1105,7 @@ public class Texture {
     private static native int nGetLevels(long nativeTexture);
     private static native int nGetTarget(long nativeTexture);
     private static native int nGetInternalFormat(long nativeTexture);
+    private static native int nGetId(long nativeTexture, long nativeEngine);
 
     private static native int nSetImage(long nativeTexture, long nativeEngine,
             int level, int xoffset, int yoffset, int width, int height,

@@ -120,6 +120,8 @@ public:
      * @return The number of indices the IndexBuffer holds.
      */
     size_t getIndexCount() const noexcept;
+
+    void getId(Engine& engine, void* result);
 };
 
 } // namespace filament

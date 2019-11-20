@@ -46,6 +46,8 @@ public:
 
     size_t getVertexCount() const noexcept;
 
+    void getId(FEngine& engine, uint8_t index, void* result);
+
     AttributeBitset getDeclaredAttributes() const noexcept {
         return mDeclaredAttributes;
     }

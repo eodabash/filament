@@ -147,6 +147,8 @@ public:
         friend class details::FVertexBuffer;
     };
 
+    void getId(Engine& engine, uint8_t bufferIndex, void* result);
+
     /**
      * Returns the vertex count.
      * @return Number of vertices in this vertex buffer set.
